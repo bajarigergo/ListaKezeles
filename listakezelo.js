@@ -23,3 +23,4 @@ export function megjelenit(txt) {
   const ELEM = $(".adatok");
   ELEM.html(txt);
 }
+

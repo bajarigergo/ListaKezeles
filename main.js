@@ -1,6 +1,8 @@
 import { EMBEREK } from "./adat.js";
+import { rendez, szures } from "./adatKezelo.js";
 import { tablazatLetrehoz, megjelenit } from "./listakezelo.js";
-
+ function regiMunka() {
+  
 function listaKiir() {
   for (let index = 0; index < EMBEREK.length; index++) {
     const element = EMBEREK[index];
@@ -89,6 +91,39 @@ function veletlen() {
 }
 
 veletlen();
+}
 
-let szoveg = tablazatLetrehoz(EMBEREK);
-megjelenit(szoveg);
+let rIrany = 1
+init(EMBEREK)
+szuresNevSzerint()
+function init(lista) {
+
+  let szoveg = tablazatLetrehoz(lista);
+  megjelenit(szoveg);
+  rendezEsemeny()
+}
+
+function rendezEsemeny() {
+    const nevMezoELEM = $(".adatok table th").eq(0)
+    nevMezoELEM.on("click", function () {
+      const LISTA = rendez(EMBEREK,"nev", rIrany)
+      console.log(LISTA);
+      init(LISTA)
+      rIrany *= -1
+      console.log(rIrany);
+    })
+}
+
+function szuresNevSzerint() {
+  const szELEM = $("#sznev")
+szELEM.on("keyup", function () {
+  let szoveg = szELEM.val()
+  init(szures(EMBEREK,szoveg))
+})
+}
+
+
+  
+
+
+
